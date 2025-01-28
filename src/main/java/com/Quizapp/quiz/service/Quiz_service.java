@@ -1,5 +1,6 @@
 package com.Quizapp.quiz.service;
 
+import com.Quizapp.quiz.Response.QuizSubmit_response;
 import com.Quizapp.quiz.model.Question_model;
 import com.Quizapp.quiz.model.Question_wrapper;
 import com.Quizapp.quiz.model.Quiz_model;
@@ -50,5 +51,17 @@ public class Quiz_service {
             question_foruser.add(question_wrapper);
         }
         return new ResponseEntity<>(question_foruser, HttpStatus.OK);
+    }
+
+    public int calculateScore(int quizId, List<QuizSubmit_response> answers) {
+        Quiz_model quiz = quiz_repo.findById(quizId).get();
+        List<Question_model> questions = quiz.getQuestions();
+        int score = 0;
+        for (int i = 0; i < answers.size(); i++) {
+            if (answers.get(i).getAnswer().equals(questions.get(i).getRightanswer())) {
+                score += 1;
+            }
+        }
+        return score;
     }
 }
