@@ -1,0 +1,10 @@
+package com.quiz_service.quiz_service.controller;
+
+import lombok.Data;
+
+@Data
+public class Quizdto {
+    private String category;
+    private int numq;
+    private String title;
+}

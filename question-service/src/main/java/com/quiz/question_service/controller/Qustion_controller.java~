@@ -1,6 +1,7 @@
 package com.quiz.question_service.controller;
 
 
+import com.quiz.question_service.Response.QuizSubmit_response;
 import com.quiz.question_service.model.Question_model;
 import com.quiz.question_service.model.Question_wrapper;
 import com.quiz.question_service.service.Question_service;
@@ -59,7 +60,13 @@ return new ResponseEntity<>(questions, HttpStatus.OK);
 
     @PostMapping("/getquestion")
     public ResponseEntity<List<Question_wrapper>> getquestionbyid(@RequestBody List<Integer> questionid) {
-        return  
+        return  question_service.getquestionbyid(questionid);
+    }
+
+    @PostMapping("/getscore/{quizId}")
+    public ResponseEntity<Integer> getscore(@PathVariable int quizId,@RequestBody List<QuizSubmit_response> answers) {
+            int score =  question_service.calculateScore(quizId,answers);
+        return new ResponseEntity<>(score, HttpStatus.OK);
     }
 
 

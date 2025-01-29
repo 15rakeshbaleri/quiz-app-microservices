@@ -8,3 +8,7 @@ spring.datasource.platform=mysql
 spring.datasource.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
 spring.jpa.hibernate.ddl-auto=update
 
+spring.instance.hostname=localhost
+server.port=8081
+eureka.client.fetch-registry=false
+eureka.client.register-with-eureka=false
