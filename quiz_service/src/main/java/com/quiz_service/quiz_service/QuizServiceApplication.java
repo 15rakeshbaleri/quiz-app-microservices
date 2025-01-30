@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
-@EnableFeignClients(basePackages = "com.quiz_service.quiz_service.Feign")
+@EnableFeignClients
 public class QuizServiceApplication {
 
 	public static void main(String[] args) {

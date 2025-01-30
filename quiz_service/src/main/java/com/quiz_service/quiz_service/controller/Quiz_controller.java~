@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/quiz")
+@RestController("/quiz")
 public class Quiz_controller {
 
     @Autowired
@@ -20,8 +19,10 @@ public class Quiz_controller {
 
     @PostMapping("/create")
     public ResponseEntity<String> createQuiz(@RequestBody Quizdto quizdto) {
-      return new ResponseEntity<>(quiz_service.createquiz(category,numq,title),HttpStatus.CREATED);
+      return new ResponseEntity<>(quiz_service.createquiz(quizdto.getCategory(),quizdto.getNumq(),quizdto.getTitle()),HttpStatus.CREATED);
     }
+
+
     @GetMapping("get/{quizId}")
     public ResponseEntity<List<Question_wrapper>> getQuiz(@PathVariable int quizId) {
 
